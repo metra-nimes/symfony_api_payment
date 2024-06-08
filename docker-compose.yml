@@ -1,0 +1,16 @@
+version: '3.9'
+name: api-test
+services:
+  php:
+    user: app
+    build:
+      context: ./
+      dockerfile: docker/php/Dockerfile
+      args:
+        USER_ID: ${USER_ID}
+    ports:
+      - "8337:8337"
+    volumes:
+      - .:/app:rw
+    environment:
+      - APP_ENV=dev
